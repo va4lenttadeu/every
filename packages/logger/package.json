@@ -11,19 +11,17 @@
     "build": "tsc",
     "clean": "rm -rf dist",
     "dev": "tsc -w",
-    "lint": "eslint \"src/**/*.ts*\" --max-warnings 0",
-    "test": "jest"
-  },
-  "jest": {
-    "preset": "@repo/jest-presets/jest/node"
+    "lint": "eslint \"src/**/*.ts*\" --max-warnings 0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "eslint": "^8.57.0",
     "@repo/eslint-config": "*",
-    "jest": "^29.7.0",
     "@repo/jest-presets": "*",
     "@repo/typescript-config": "*",
+    "@types/jest": "^29.5.12",
+    "eslint": "^8.57.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "pino": "^8.20.0"
   }
 }

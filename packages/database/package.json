@@ -1,0 +1,35 @@
+{
+  "name": "@repo/database",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "db:migrate:deploy": "npm run with-env prisma migrate deploy",
+    "db:migrate:dev": "npm run with-env prisma migrate dev",
+    "db:push": "npm run with-env prisma db push",
+    "format": "npm run with-env prisma format",
+    "db:generate": "npm run with-env prisma generate",
+    "prebuild": "npm run db:generate",
+    "postinstall": "prisma generate",
+    "studio": "npm run with-env prisma studio  --port 5556",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.12.1",
+    "dotenv-cli": "^7.4.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "eslint": "^8.57.0",
+    "prisma": "^5.12.1",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  }
+}

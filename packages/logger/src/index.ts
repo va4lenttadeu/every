@@ -1,3 +1,3 @@
-export const log = (str: any) => {
-  console.log("logger: " + str);
-};
+import pino from "pino";
+
+export const logger = pino();

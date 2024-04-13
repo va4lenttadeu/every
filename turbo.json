@@ -1,12 +1,11 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["PORT"],
+  "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
       "outputs": ["dist/**", ".next/**", "!.next/cache/**", "public/dist/**"],
-      "dependsOn": ["^build"],
-      "env": ["NEXT_PUBLIC_API_HOST"]
+      "dependsOn": ["^build", "^db:generate"]
     },
     "test": {
       "outputs": ["coverage/**"],
@@ -20,6 +19,17 @@
       "persistent": true
     },
     "clean": {
+      "cache": false
+    },
+    "db:generate": {
+      "inputs": ["prisma/schema.prisma"],
+      "outputs": ["prisma/**"],
+      "cache": false
+    },
+    "db:migrate:deploy": {
+      "cache": false
+    },
+    "db:migrate:dev": {
       "cache": false
     }
   }

@@ -5,20 +5,22 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "dev": "turbo run dev",
+    "dev": "dotenv -- turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
-    "test": "turbo run test"
+    "test": "npm run with-env turbo run test",
+    "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "with-env": "dotenv -e .env --"
   },
-  "dependencies": {},
   "devDependencies": {
     "@repo/eslint-config": "*",
+    "dotenv-cli": "^7.4.1",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
   "packageManager": "npm@9.5.1",
   "workspaces": [
